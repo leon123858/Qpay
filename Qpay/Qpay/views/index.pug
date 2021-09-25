@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p It is a web API for Qpay
+  p 信用卡即時支付 demo
+  ul
+    li POST {{localURL}}api/VISA/purchase => 提供前端進行購買
+      p 參數1: itemName => 購買物品名稱
+      p 參數2: price => 價格
+    li POST {{localURL}}api/VISA/pollingAsk => 使用者付款完成, 自動跳轉至預設前端頁面時, 會攜帶以下兩個參數, 此時利用此 API 即可取得訂單付款結果
+      p 參數1: ShopNo => 店鋪名稱
+      p 參數2: PayToken => 訂單代碼

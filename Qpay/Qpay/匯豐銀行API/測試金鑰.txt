@@ -1,0 +1,11 @@
+雜湊值
+A1 : 86D50DEF3EB7400E
+A2 : 01FD27C09E5549E5
+B1 : 9E004965F4244953
+B2 : 7FB3385F414E4F91
+
+加密範例網址：https://sandbox.sinopac.com/QPay.ApiClient/Calc/Encrypt
+解密範例網址：https://sandbox.sinopac.com/QPay.ApiClient/Calc/Descrypt
+若測試過程中有任何問題可寄信到技術信箱並寄送副本至下列信箱
+技術信箱: ecapi_tech@sinopac.com
+CC : ya.chiu@sinopac.com; kenhsu@sinopac.com 

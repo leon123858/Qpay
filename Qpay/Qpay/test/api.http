@@ -1,0 +1,55 @@
+@localURL=http://127.0.0.1:3000/
+@serviceURL=https://sandbox.sinopac.com/QPay.WebAPI/api/
+###
+# 首頁
+GET {{localURL}} HTTP/1.1
+content-type: application/json
+###
+#取得 NONCE
+POST {{serviceURL}}Nonce HTTP/1.1
+content-type: application/json
+
+{
+  	"ShopNo":"NA0249_001"
+}
+###
+# 購買
+POST {{localURL}}api/VISA/purchase HTTP/1.1
+content-type: application/json
+
+{
+  	"itemName":"baby",
+    "price": 5000
+}
+
+###
+# polling狀態
+POST {{localURL}}api/VISA/pollingAsk HTTP/1.1
+content-type: application/json
+
+{
+  	"ShopNo":"NA0249_001",
+    "PayToken": "397a953c6fe8e5c729c815608fd3e7449c29ca23b9ca7acd921568727b777c6a"
+}
+
+
+# ###
+# # 返回前端 ReturnURL
+# POST {{localURL}}payResult HTTP/1.1
+# content-type: application/json
+
+# {
+#   	"itemName":"baby",
+#     "price": 5000
+# }
+
+# ###
+# # 返回後端 BackendURL
+# POST {{localURL}}webhook/VISA HTTP/1.1
+# content-type: application/json
+
+# {
+#   	"ShopNo":"NA0249_001",
+#     "PayToken": "4e0cc4cf291257e1610c98144096927fee18713b4b5f90ab02dde78ab68880e2"
+# }
+
