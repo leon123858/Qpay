@@ -25,7 +25,7 @@ router.post('/purchase', async (req, res) => {
 	await creator.init();
 	await creator.sendRequest({ body, bodyStr: bodyParse(body) }, 'OrderCreate');
 	await creator.getResponse();
-	res.redirect(creator.data.CardParam.CardPayURL);
+	res.redirect(creator.data?.CardParam?.CardPayURL);
 });
 router.post('/pollingAsk', async (req, res) => {
 	const creator = new parameterCreator({
