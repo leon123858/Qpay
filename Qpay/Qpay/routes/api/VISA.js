@@ -4,7 +4,7 @@ const router = express.Router();
 import parameterCreator from '../../utils/util/parameterCreator.js';
 import getConst from '../../utils/util/const.js';
 import { bodyCreate, bodyParse } from '../../utils/VISA/bodyCreator.js';
-import { queryBody } from '../../utils/VISA/queryBody.js';
+import { queryBody as shopBody } from '../../utils/VISA/queryBody.js';
 
 router.post('/purchase', async (req, res) => {
 	const { itemName, price } = req.body;
@@ -37,10 +37,7 @@ router.post('/pollingAsk', async (req, res) => {
 	});
 	const body = req.body;
 	await creator.init();
-	await creator.sendRequest(
-		{ body, bodyStr: queryBody(body) },
-		'OrderPayQuery'
-	);
+	await creator.sendRequest({ body, bodyStr: shopBody(body) }, 'OrderPayQuery');
 	await creator.getResponse();
 	if (creator.data.TSResultContent.Status == 'S') {
 		res.status(200).json({
